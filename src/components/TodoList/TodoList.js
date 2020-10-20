@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TodoItem from '../TodoItem';
 
 export default class TodoList extends Component{
-    //리렌더링 최적화 
+    //리렌더링 최적화 1(todos의 props가 바뀔때만 리렌더링을 하도록 한다)
     shouldComponentUpdate(nextProp, nextState){
         return this.props.todos!== nextProp.todos;
     }

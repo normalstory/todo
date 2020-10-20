@@ -5,6 +5,11 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 export default class TodoItem extends Component{
+    //리렌더링 최적화 2 (done이 바뀔때만 리렌더링을 하도록 한다)
+    shouldComponentUpdate(nextProps,nextState){
+        return this.props.done !== nextProps.done;
+    }
+
     render(){
         const {onToggle, done, children, onRemove} =this.props; //이번 컨포넌트의 재료들(feat.비구조화 할당 문법)
 
