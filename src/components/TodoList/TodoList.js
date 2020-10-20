@@ -3,10 +3,15 @@ import TodoItem from '../TodoItem';
 
 export default class TodoList extends Component{
     render(){
+        const {todos} = this.props;
+        const todoList=todos.map(
+            todos=>(
+                <TodoItem key={todos.id} done={todos.done}>{todos.text}</TodoItem>
+            )
+        );
         return(
             <div>
-                <TodoItem done>컴포넌트 생성하기</TodoItem>
-                <TodoItem>컴포넌트 스타일링하기 </TodoItem>
+                {todoList}
             </div>
         );
     }
