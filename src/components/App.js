@@ -64,18 +64,34 @@ export default class App extends Component{
     }
 
 
+    handleRemove=(id)=>{
+        // 1)id로 배열의 인덱스 찾기 
+        const {todos} = this.state;
+        const index = todos. findIndex(todo => todo.id === id);
+        
+        // 2) 찾은 찾은 index 전후 데이터는 복사하고 찾은 index 데이터는 제외 
+        this.setState({
+            todos:[
+                ...todos.slice(0,index),
+                ...todos.slice(index+1, todos.length)
+            ]
+        })
+    }
+
+
     render(){
         const {input, todos} =this.state;
         const {
             handleChange,
             handleInsert,
-            handleToggle
+            handleToggle,
+            handleRemove
         }=this;
 
         return(
             <PageTemplate>
                 <TodoInput onChange={handleChange} onInsert={this.handleInsert} value={input}/>
-                <TodoList todos={todos} onToggle={handleToggle}/>
+                <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
             </PageTemplate>
         )
     }
