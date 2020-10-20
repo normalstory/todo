@@ -19,6 +19,7 @@ export default class App extends Component{
         })
     }
 
+
     id=1 //데이터에 들어가는 id값 
     getId = () => {
         return ++this.id; //현재에서 +1 
@@ -40,15 +41,41 @@ export default class App extends Component{
        })
     }
 
+      
+    handleToggle=(id)=>{ //선택 항목 토글하기
+        // 1)id로 배열의 인덱스 찾기 
+        const {todos} =this.state;
+        const index = todos.findIndex(todo => todo.id === id);
+
+        // 2)찾은 데이터 값(done) 반전시키기  
+        const toggled ={
+            ...todos[index],
+            done:!todos[index].done
+        };
+
+        // 3)찾은 데이터 전후데이터 복사, 그 사이에 변경된 객체 주입
+        this.setState({
+            todos:[
+                ...todos.slice(0, index),
+                toggled,
+                ...todos.slice(index+1,todos.length)
+            ]
+        }); 
+    }
+
 
     render(){
         const {input, todos} =this.state;
-        const {handleChange}=this;
+        const {
+            handleChange,
+            handleInsert,
+            handleToggle
+        }=this;
 
         return(
             <PageTemplate>
                 <TodoInput onChange={handleChange} onInsert={this.handleInsert} value={input}/>
-                <TodoList todos={todos}/>
+                <TodoList todos={todos} onToggle={handleToggle}/>
             </PageTemplate>
         )
     }
