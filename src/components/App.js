@@ -3,14 +3,21 @@ import PageTemplate from './PageTemplate'
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
+const initialTodos=new Array(500).fill(0).map( //리렌더링 최적화 
+    (foo, index) =>({id:index, text:`일정 ${index}`, done:false})
+);
+
 export default class App extends Component{
     state={
         input:'', //input 값
-        todos:[   //input 초기값
-            {id:0, text:'컴포넌트 만들기', done:true},
-            {id:1, text:'컴포넌트 스타일링하기', done:false}
-        ]
+        // todos:[   //input 초기값
+        //     {id:0, text:'컴포넌트 만들기', done:true},
+        //     {id:1, text:'컴포넌트 스타일링하기', done:false}
+        // ]
+        todos:initialTodos,
     }
+
+
     handleChange=(e)=>{
         const {value} =e.target;
 
