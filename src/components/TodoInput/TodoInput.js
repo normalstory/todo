@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 //value : input value, onChange : input 변경이벤트, onInsert : 추가버튼 클릭이벤트 
+//함수형 컴포넌트
 const TodoInput =({value, onChange, onInsert})=>{
     const handleKeyPress=(e)=>{
         if(e.key==='Enter'){

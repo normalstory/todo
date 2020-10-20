@@ -1,1 +1,1 @@
-export {default} from 'from/TodoInput';
+export {default} from './TodoInput';
