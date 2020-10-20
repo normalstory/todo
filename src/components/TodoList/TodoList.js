@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import TodoItem from '../TodoItem';
 
 export default class TodoList extends Component{
+    //리렌더링 최적화 
+    shouldComponentUpdate(nextProp, nextState){
+        return this.props.todos!== nextProp.todos;
+    }
+
     render(){
         const {todos, onToggle, onRemove} = this.props;
         const todoList=todos.map(
