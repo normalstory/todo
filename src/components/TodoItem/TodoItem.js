@@ -12,7 +12,10 @@ export default class TodoItem extends Component{
             <div className={cx('todo-item')} onClick={onToggle}>
                 <input className={cx('tick')} type="checkbox" checked={done} readOnly/>
                 <div className={cx('text', {done})}>{children}</div>
-                <div className={cx('delete')} onClick={onRemove}>[지우기]</div>
+                <div className={cx('delete')} onClick={(e)=>{
+                    onRemove();
+                    e.stopPropagation(); //toggle(부모)과 remove(자식)간 propagation 이슈해결 
+                }}>[지우기]</div>
             </div>
         );
     }
