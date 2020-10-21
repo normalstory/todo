@@ -1,5 +1,8 @@
 @import '../../styles/openColor.scss'; // 더 좋은 방법이 있을텐데.. v2라 그런지..검색이 잘 안된다.. 
 
+.none{
+  display: none;
+}
 .todo-input {
   border-top: 1px solid $oc-gray-2;
   border-bottom: 1px solid $oc-gray-2;
@@ -37,6 +40,27 @@
     }
     &:active {
       background: $oc-green-8;
+    }
+  }
+  .update-button {
+    width: 5rem;
+    height: 2rem;
+    margin-left: 1rem;
+    border: 1px solid $oc-blue-7;
+    color: $oc-blue-7;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: flex;
+    // 내용을 가운데에 정렬시킵니다.
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+      background: $oc-blue-7;
+      color: white;
+    }
+    &:active {
+      background: $oc-blue-8;
     }
   }
 }
